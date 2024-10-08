@@ -1,74 +1,3 @@
-/*для main*/
-
-:root {
-    --background-light: #ffffff; /* Цвет фона светлой темы */
-    --background-dark: #222; /* Цвет фона темной темы */
-    --text-light: #000000; /* Цвет текста светлой темы */
-    --text-dark: #ffffff; /* Цвет текста темной темы */
-    --nav-background-light: #f0f0f0; /* Фон навигации в светлой теме */
-    --nav-background-dark: #444; /* Фон навигации в темной теме */
-}
-
-.comic-card
-{
-    margin-bottom: 50px;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 20px;
-}
-
-/* Стили для заголовка */
-h1 {
-    text-align: center;
-    color: var(--text-light); /* Цвет заголовка по умолчанию */
-}
-h2
-{
-    margin:0;
-}
-
-/* Сетка для галереи комиксов */
-.comics-gallery {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;   /* Разрешаем перенос элементов на следующую строку */
-    gap: 20px;         /* Пробелы между элементами */
-    margin-top: 20px;
-}
-
-/* Оформление каждого элемента в галерее */
-.comic-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    text-align: center;
-    width: 220px;
-    color: var(--text-dark);
-}
-
-/* Одинаковый размер изображений */
-.comic-image {
-    width: 200px;      /* Фиксированная ширина */
-    height: 300px;     /* Фиксированная высота */
-    object-fit: cover; /* Масштабируем изображение, сохраняя пропорции */
-    border-radius: 4px;
-    margin-bottom: 10px; /* Отступ между изображением и текстом */
-}
-
-/* Стили для описания комикса */
-.comic-item p {
-    font-size: 16px;
-    color: #555;
-    margin: 0;
-    padding: 0;
-}
-
-
 /*для password_form*/
 .logpage
 {
@@ -100,18 +29,96 @@ h2
     font-size: 14px;
 }
 
+
+/*для main*/
+
+body 
+{
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2
+{
+    margin:0;
+}
+
+/* Сетка для галереи комиксов */
+.comics-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;   /* Разрешаем перенос элементов на следующую строку */
+    gap: 20px;         /* Пробелы между элементами */
+    margin-top: 20px;
+}
+.comic-card
+{
+    margin-bottom: 50px;
+}
+
+/* Оформление каждого элемента в галерее */
+.comic-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    width: 220px;
+}
+
+/* Одинаковый размер изображений */
+.comic-image {
+    width: 200px;      /* Фиксированная ширина */
+    height: 300px;     /* Фиксированная высота */
+    object-fit: cover; /* Масштабируем изображение, сохраняя пропорции */
+    border-radius: 4px;
+    margin-bottom: 10px; /* Отступ между изображением и текстом */
+}
+
+/* Стили для описания комикса */
+.comic-item p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+    padding: 0;
+}
+
+.theme-toggle-button {
+    background-color: #007BFF; /* Цвет фона кнопки */
+    color: #ffffff; /* Цвет текста кнопки */
+    border: none; /* Убираем рамку */
+    border-radius: 5px; /* Закругленные углы */
+    padding: 10px 20px; /* Внутренние отступы */
+    font-size: 16px; /* Размер шрифта */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s ease; /* Плавный переход цвета фона */
+    margin-top: 10px;
+}
+
+.theme-toggle-button:hover {
+    background-color: #0056b3; /* Цвет фона при наведении */
+}
+
+.theme-toggle-button:active {
+    background-color: #004494; /* Цвет фона при нажатии */
+}
+
 /* Стили для навигационного меню */
 nav {
     background-color: #333; /* Цвет фона навигации */
-    background-color: var(--nav-background-dark); /* Цвет текста */
     padding: 15px; /* Внутренние отступы */
     text-align: center; /* Выравнивание текста по центру */
     border-radius: 5px; /* Закругленные углы */
     margin-bottom: 20px; /* Отступ снизу */
 }
-body.dark-theme h1 {
-    color: var(--text-dark);
-}
+
 
 /* Стили для ссылок в навигации */
 nav a {
@@ -121,6 +128,7 @@ nav a {
     margin: 0 5px; /* Отступы между ссылками */
     border-radius: 3px; /* Закругленные углы для ссылок */
     transition: background-color 0.3s; /* Плавный переход при наведении */
+    background-color: #333;
 }
 
 /* Эффект при наведении на ссылки */
@@ -144,6 +152,8 @@ nav li {
     margin-right: 10px; /* Отступы между элементами списка */
 }
 
+
+
 /*ДЛЯ ТЕМЫ*/
 
 /* Стили для светлой темы */
@@ -156,24 +166,4 @@ nav li {
 .dark-theme {
     background-color: #222; /* Цвет фона */
     color: #ffffff; /* Цвет текста */
-}
-
-.theme-toggle-button {
-    background-color: #007BFF; /* Цвет фона кнопки */
-    color: #ffffff; /* Цвет текста кнопки */
-    border: none; /* Убираем рамку */
-    border-radius: 5px; /* Закругленные углы */
-    padding: 10px 20px; /* Внутренние отступы */
-    font-size: 16px; /* Размер шрифта */
-    cursor: pointer; /* Курсор при наведении */
-    transition: background-color 0.3s ease; /* Плавный переход цвета фона */
-    margin-top: 10px;
-}
-
-.theme-toggle-button:hover {
-    background-color: #0056b3; /* Цвет фона при наведении */
-}
-
-.theme-toggle-button:active {
-    background-color: #004494; /* Цвет фона при нажатии */
 }

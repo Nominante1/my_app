@@ -7,7 +7,7 @@
     <title>Каталог комиксов</title>
     <link rel="stylesheet" type="text/css" href="{% static 'lab_3/css/style.css' %}">
 </head>
-<body>
+<body class="{% if theme == 'dark' %}dark-theme{% else %}light-theme{% endif %}">
     <header>
         <h1>Каталог комиксов</h1>
         <nav>
@@ -17,7 +17,10 @@
                 <li><a href="#">DC Comics</a></li>
                 <li><a href="#">Инди</a></li>
             </ul>
-            <button id="theme-toggle" class="theme-toggle-button">Сменить тему</button> <!-- Кнопка для смены темы -->
+            <form action="{% url 'toggle_theme' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="theme-toggle-button">Сменить тему</button>
+            </form> <!-- Кнопка для смены темы -->
         </nav>
     </header>
 
