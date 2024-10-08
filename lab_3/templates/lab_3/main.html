@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог комиксов</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'lab_3/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Каталог комиксов</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Все</a></li>
+                <li><a href="#">Marvel</a></li>
+                <li><a href="#">DC Comics</a></li>
+                <li><a href="#">Инди</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="comics-container">
+            <!-- Пример карточки комикса -->
+            <div class="comic-card">
+                <img src="{% static 'lab_3/images/comics1.jpg' %}" alt="Комикс 1" class="comic-image">
+                <h2>Я в Пархиже: Доне муа сюит а риц да не ве пааааа</h2>
+                <p>Краткое описание комикса. Этот комикс рассказывает историю супергероя...</p>
+                <a href="#" class="details-link">Подробнее</a>
+            </div>
+
+            <div class="comic-card">
+                <img src="{% static 'lab_3/images/comics2.jpg' %}" alt="Комикс 2" class="comic-image">
+                <h2>Легион легионов: легенда о радиоактивных людях</h2>
+                <p>Краткое описание комикса. Второй комикс продолжает историю о...</p>
+                <a href="#" class="details-link">Подробнее</a>
+            </div>
+
+            <div class="comic-card">
+                <img src="{% static 'lab_3/images/comics3.jpg' %}" alt="Комикс 3" class="comic-image">
+                <h2>Жокер</h2>
+                <p>Краткое описание комикса. Новый выпуск из серии приключений...</p>
+                <a href="#" class="details-link">Подробнее</a>
+            </div>
+
+            <!-- Добавьте больше карточек по необходимости -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Каталог комиксов. Все права защищены.</p>
+    </footer>
+</body>
+</html>

@@ -8,16 +8,16 @@ class PasswordForm(forms.Form):
 
     def clean_password1(self):
         password1 = self.cleaned_data.get('password1')
-        if len(password1) < 8:
-            raise ValidationError("Длина пароля должна быть не менее 8 символов.")
-        if not re.search(r'[A-Z]', password1):
-            raise ValidationError("Пароль должен содержать хотя бы одну прописную букву.")
-        if not re.search(r'\d', password1):
-            raise ValidationError("Пароль должен содержать хотя бы одну цифру.")
-        if not re.search(r'[a-zA-Z]', password1):
-            raise ValidationError("Пароль должен содержать только символы латинского алфавита.")
-        if not re.search(r'[&#?]', password1):
-            raise ValidationError("Пароль должен содержать хотя бы один из символов: #&?")
+        #if len(password1) < 8:
+        #    raise ValidationError("Длина пароля должна быть не менее 8 символов.")
+        #if not re.search(r'[A-Z]', password1):
+         #   raise ValidationError("Пароль должен содержать хотя бы одну прописную букву.")
+        #if not re.search(r'\d', password1):
+        #    raise ValidationError("Пароль должен содержать хотя бы одну цифру.")
+        #if not re.search(r'[a-zA-Z]', password1):
+        #    raise ValidationError("Пароль должен содержать только символы латинского алфавита.")
+        #if not re.search(r'[&#?]', password1):
+        #    raise ValidationError("Пароль должен содержать хотя бы один из символов: #&?")
         return password1
 
     def clean(self):
