@@ -1,5 +1,14 @@
 /*для main*/
 
+:root {
+    --background-light: #ffffff; /* Цвет фона светлой темы */
+    --background-dark: #222; /* Цвет фона темной темы */
+    --text-light: #000000; /* Цвет текста светлой темы */
+    --text-dark: #ffffff; /* Цвет текста темной темы */
+    --nav-background-light: #f0f0f0; /* Фон навигации в светлой теме */
+    --nav-background-dark: #444; /* Фон навигации в темной теме */
+}
+
 .comic-card
 {
     margin-bottom: 50px;
@@ -14,7 +23,7 @@ body {
 /* Стили для заголовка */
 h1 {
     text-align: center;
-    color: #333;
+    color: var(--text-light); /* Цвет заголовка по умолчанию */
 }
 h2
 {
@@ -39,6 +48,7 @@ h2
     padding: 10px;
     text-align: center;
     width: 220px;
+    color: var(--text-dark);
 }
 
 /* Одинаковый размер изображений */
@@ -93,11 +103,14 @@ h2
 /* Стили для навигационного меню */
 nav {
     background-color: #333; /* Цвет фона навигации */
-    color: #fff; /* Цвет текста */
+    background-color: var(--nav-background-dark); /* Цвет текста */
     padding: 15px; /* Внутренние отступы */
     text-align: center; /* Выравнивание текста по центру */
     border-radius: 5px; /* Закругленные углы */
     margin-bottom: 20px; /* Отступ снизу */
+}
+body.dark-theme h1 {
+    color: var(--text-dark);
 }
 
 /* Стили для ссылок в навигации */
@@ -129,4 +142,38 @@ nav ul {
 nav li {
     display: inline; /* Выводим элементы списка в одной строке */
     margin-right: 10px; /* Отступы между элементами списка */
+}
+
+/*ДЛЯ ТЕМЫ*/
+
+/* Стили для светлой темы */
+.light-theme {
+    background-color: #ffffff; /* Цвет фона */
+    color: #000000; /* Цвет текста */
+}
+
+/* Стили для тёмной темы */
+.dark-theme {
+    background-color: #222; /* Цвет фона */
+    color: #ffffff; /* Цвет текста */
+}
+
+.theme-toggle-button {
+    background-color: #007BFF; /* Цвет фона кнопки */
+    color: #ffffff; /* Цвет текста кнопки */
+    border: none; /* Убираем рамку */
+    border-radius: 5px; /* Закругленные углы */
+    padding: 10px 20px; /* Внутренние отступы */
+    font-size: 16px; /* Размер шрифта */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s ease; /* Плавный переход цвета фона */
+    margin-top: 10px;
+}
+
+.theme-toggle-button:hover {
+    background-color: #0056b3; /* Цвет фона при наведении */
+}
+
+.theme-toggle-button:active {
+    background-color: #004494; /* Цвет фона при нажатии */
 }
