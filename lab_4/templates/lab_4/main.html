@@ -31,6 +31,9 @@
         <div class="f">
             <label for="id_types">{{ form.sptypes.label }}</label>
             {{ form.sptypes }}
+            {% if form.sptypes.errors %}
+            <div class="error">{{ form.sptypes.errors }}</div> <!-- Если произошла ошибка (не выбран ни один вариант)-->
+            {% endif %}
         </div>
     <button type="submit" class="btn btn-primary">Отправить</button>
     </form>

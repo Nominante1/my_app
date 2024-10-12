@@ -1,5 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from .models import Document
 
 SPORT_CATEGORIES = [
     ('candidate', 'Кандидат в мастера спорта'),
@@ -26,9 +27,21 @@ class SportForm(forms.Form):
     gender = forms.ChoiceField(widget=forms.RadioSelect, choices=GENDERS, label="Пол")
     spcat = forms.ChoiceField(choices=SPORT_CATEGORIES, label="Спортивная категория")
     sptypes = forms.MultipleChoiceField(
-        required=False,
+        required=True,
         widget=forms.CheckboxSelectMultiple,
         choices=SPORT_TYPES,
         label="Виды спорта"
     )
 
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ('title', 'file',)
+
+def clean_file(self):
+    file = self.cleaned_data.get('file')
+    mime = magic.Magic(mime=True)
+    file_type = mime.from_buffer(file.read())
+    if not file_type.startswith('image/'):  # Например, только изображения
+        raise forms.ValidationError('Этот файл не является изображением.')
+    return file
