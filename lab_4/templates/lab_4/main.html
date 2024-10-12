@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <div class="f">
+            <label for="id_name">{{ form.name.label }}</label>
+            {{ form.name }}
+        </div>
+        <div class="f">
+            <label for="id_surname">{{ form.surname.label }}</label>
+            {{ form.surname }}
+        </div>
+        <div class="f">
+            <label for="id_age">{{ form.age.label }}</label>
+            {{ form.age }}
+        </div>
+        <div class="f">
+            <label for="id_gender">{{ form.gender.label }}</label>
+            {{ form.gender }}
+        </div>
+        <div class="f">
+            <label for="id_cats">{{ form.spcat.label }}</label>
+            {{ form.spcat }}
+        </div>
+        <div class="f">
+            <label for="id_types">{{ form.sptypes.label }}</label>
+            {{ form.sptypes }}
+        </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+</body>
+</html>
