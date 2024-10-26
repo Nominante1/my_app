@@ -58,28 +58,21 @@ def upload_file(request):
         if form.is_valid():
             form.save()
             return redirect('file_list')
-        else:
-            form = DocumentForm()
-        return render(request, 'lab4_upload.html', {'form': form})
-def file_list(request):
-    documents = Document.objects.all()
-    return render(request, lab_4/file_list.html, {'documents': documents})
-
-def delete_file(request, pk):#pk - первичный ключ, по которому будет вестись поиск объекта
-    document = get_object_or_404(Document, pk=pk)
-    document.file.delete()  # Удаляем файл с диска
-    document.delete()  # Удаляем запись из базы данных
-    return redirect('file_list')
-
-def edit_file(request, pk):
-    document = get_object_or_404(Document, pk=pk)
-    if request.method == 'POST':
-        form = DocumentForm(request.POST, request.FILES, instance=document)
-        if form.is_valid():
-            form.save()
-            return redirect('file_list')
     else:
-        form = DocumentForm(instance=document)
-    return render(request, 'upload.html', {'form': form}) #передача формы в upload.html
+        form = DocumentForm()
+    return render(request, 'lab_4/upload.html', {'form': form})
+
+def file_list(request):
+    file_dir = os.path.join(settings.MEDIA_ROOT, 'documents')
+    json_files = []
+
+    if os.path.exists(file_dir):
+        for filename in os.listdir(file_dir):
+            if filename.endswith('.json'):
+                json_files.append(filename)
+    context = {
+        'json_files': json_files, #нужен как словарь для html (списки не пропускает)
+    }
+    return render(request, 'lab_4/file_list.html', context)
 
 

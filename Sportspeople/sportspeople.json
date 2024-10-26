@@ -1,0 +1,12 @@
+[
+    {
+        "name": "ff",
+        "surname": "ff",
+        "age": 10,
+        "gender": "2",
+        "spcat": "candidate",
+        "sptypes": [
+            "skating"
+        ]
+    }
+]

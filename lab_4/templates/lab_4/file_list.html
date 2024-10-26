@@ -6,13 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <ul>
-        {% for document in documents %}
-            <li>
-                <a href="{{ document.file.url }}">{{ document.title }}</a>
-                (Uploaded: {{ document.uploaded_at }})
-            </li>
-        {% endfor %}
-    </ul>    
+    <h2>Uploaded Files</h2>
+        {% if no_files %}
+            <p>No JSON files found.</p>
+        {% else %}
+    <h3>JSON Files:</h3>
+        <ul>
+            {% for file in json_files %}
+                <li>{{ file }}</li>
+            {% endfor %}
+        </ul>  
+        {% endif %}
 </body>
 </html>

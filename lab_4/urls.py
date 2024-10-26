@@ -1,11 +1,13 @@
 from django.urls import path
-from .views import sport_view
+from .views import sport_view, upload_file, file_list
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
         path('mainsport/', sport_view, name='sport_view'),
+        path('upload/', upload_file, name='upload_file'),
+        path('files/', file_list, name='file_list')
     ]
 if settings.DEBUG: #во время разработки мы получаем новый маршрут: /localhost8000/media
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
