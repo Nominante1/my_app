@@ -28,7 +28,7 @@ def save_sportspeople_data(data):
             json.dump([], f) #если файла нет, создаём его как список
 
     with open(file_path, 'r+') as f: #открываем файл json
-        file_content = f.read().strip()
+        file_content = f.read().strip() #чтение без пробелов
         if file_content:  # если файл не пуст (иначе при пустом файле будет выдавать ошибку декодирования)
             f.seek(0)  # возвращаем курсор в начало файла
             sportspeople = json.load(f)#загружаем данные из файла в переменную

@@ -6,16 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Uploaded Files</h2>
+    <h2>Загруженные файлы</h2>
         {% if no_files %}
             <p>No JSON files found.</p>
         {% else %}
-    <h3>JSON Files:</h3>
+    <h3>JSON файлы:</h3>
         <ul>
             {% for file in json_files %}
                 <li>{{ file }}</li>
             {% endfor %}
         </ul>  
         {% endif %}
+        <a href="{% url 'sport_view' %}">Вернуться на главную</a>
 </body>
 </html>

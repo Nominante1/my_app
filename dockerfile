@@ -1,4 +1,4 @@
-FROM python
+FROM python:3.12
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /usr/src/app
 # Копируем файл requirements.txt внутрь контейнера

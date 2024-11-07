@@ -1,12 +1,12 @@
 [
     {
-        "name": "ff",
-        "surname": "ff",
-        "age": 10,
-        "gender": "2",
+        "name": "aaa",
+        "surname": "aa",
+        "age": 20,
+        "gender": "1",
         "spcat": "candidate",
         "sptypes": [
-            "skating"
+            "football"
         ]
     }
 ]

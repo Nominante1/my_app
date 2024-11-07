@@ -41,11 +41,12 @@ class DocumentForm(forms.ModelForm):
 
     def clean_file(self):
         file = self.cleaned_data.get('file')
+        print(file.name)
         # Проверяем расширение файла
         if not file.name.endswith('.json'):
             raise forms.ValidationError('Только файлы формата JSON допустимы.')
         try:
-            # Временно читаем файл для проверки на JSON
+            # Читаем файл для проверки на JSON
             file_content = file.read().decode('utf-8')
             json.loads(file_content)
             file.seek(0)  # Возвращаем курсор в начало для последующего использования

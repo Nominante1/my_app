@@ -1,11 +1,12 @@
 services:
   django:
     # Сборка образа для сервиса django из текущей директории
-    build: .
+    build:
+      context: ./my_app
     # Задание имени контейнера для сервиса django
     container_name: django
     # Задание команды, которую нужно запустить при запуске контейнера для сервиса django
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python ./my_app/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/usr/src/app
     # Открытие порта на хостовой машине и перенаправление на порт в контейнере
