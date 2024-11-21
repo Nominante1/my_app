@@ -1,12 +1,100 @@
 [
     {
-        "name": "aaa",
-        "surname": "aa",
-        "age": 20,
+        "name": "rttr",
+        "surname": "Насридинов",
+        "age": 99,
+        "gender": "2",
+        "spcat": "second",
+        "sptype": [
+            "biathlon",
+            "boxing"
+        ]
+    },
+    {
+        "name": "папапа",
+        "surname": "апапап",
+        "age": 34,
         "gender": "1",
-        "spcat": "candidate",
-        "sptypes": [
+        "spcat": "third",
+        "sptype": [
+            "skating",
+            "biathlon"
+        ]
+    },
+    {
+        "name": "папапа",
+        "surname": "апапап",
+        "age": 34,
+        "gender": "1",
+        "spcat": "third",
+        "sptype": [
+            "skating",
+            "biathlon"
+        ]
+    },
+    {
+        "name": "папапа",
+        "surname": "апапап",
+        "age": 34,
+        "gender": "1",
+        "spcat": "third",
+        "sptype": [
+            "skating",
+            "biathlon"
+        ]
+    },
+    {
+        "name": "апап",
+        "surname": "апап",
+        "age": 12,
+        "gender": "1",
+        "spcat": "third",
+        "sptype": [
+            "skating",
+            "biathlon"
+        ]
+    },
+    {
+        "name": "апап",
+        "surname": "апап",
+        "age": 12,
+        "gender": "1",
+        "spcat": "third",
+        "sptype": [
+            "skating",
+            "biathlon"
+        ]
+    },
+    {
+        "name": "123",
+        "surname": "123",
+        "age": 56,
+        "gender": "1",
+        "spcat": "first",
+        "sptype": [
             "football"
+        ]
+    },
+    {
+        "name": "fgg",
+        "surname": "gfg",
+        "age": 15,
+        "gender": "1",
+        "spcat": "junior_first",
+        "sptype": [
+            "football",
+            "skating"
+        ]
+    },
+    {
+        "name": "fgg",
+        "surname": "gfg",
+        "age": 15,
+        "gender": "1",
+        "spcat": "junior_first",
+        "sptype": [
+            "football",
+            "skating"
         ]
     }
 ]

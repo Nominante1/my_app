@@ -83,10 +83,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',   # Используется PostgreSQL
-        'NAME': 'postgres', # Имя базы данных
-        'USER': 'postgres', # Имя пользователя
-        'PASSWORD': 'postgres', # Пароль пользователя
-        'HOST': 'pgdb', # Наименование контейнера для базы данных в Docker Compose
+        'NAME': 'db_exp', # Имя базы данных
+        'USER': 'ivan', # Имя пользователя
+        'PASSWORD': 'ivan', # Пароль пользователя
+        'HOST': 'localhost', # Наименование контейнера для базы данных в Docker Compose
         'PORT': '5432',  # Порт базы данных
     }
 }
@@ -148,7 +148,7 @@ LOGGING = {
             'handlers': ['console'],
             'level': 'DEBUG',
         },
-        'lab_3': {  # Замените на имя вашего приложения
+        'lab_3': { 
             'handlers': ['console'],
             'level': 'DEBUG',
         },

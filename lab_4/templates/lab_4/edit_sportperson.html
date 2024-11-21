@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать спортсмена</title>
+</head>
+<body>
+    <h1>Редактировать спортивную категорию</h1>
+    <div id="button_print_all_db">
+        <button class="btn btn-primary">Вывести записи из БД</button>
+    </div>
+    <h1>Sportsperson List</h1>
+        <table id="sport-table" border="1">
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Sport Category</th>
+                <th>Sport Types</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table> <br>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() 
+        {
+            const Button_print = document.getElementById('button_print_all_db');
+            const GetSportUrls = "{% url 'get_sportperson' %}";
+            Button_print.addEventListener('click', function() //слушаем изменение поля инпут
+            {
+                getAllSportperson(GetSportUrls);
+            });
+        })
+        document.addEventListener('DOMContentLoaded', function() 
+        {
+            const Button_edit = document.getElementById('button_edit_db');
+        })
+        function StartEdit(obj)
+        {
+            const edit_url = "{% url 'edit_sportperson'}";
+            const id_button = obj.id;
+            const id_spcat = obj.id;
+            const inputs_spcat = document.getElementByTagName(input);
+            for(let i=0; i < inputs_spcat.length; i++)
+            {
+                if (inputs_spcat[i].id == obj.id)
+                {
+                    input_spcat = inputs_spcat[i].value();
+                }
+            }
+            edit_sportperson(edit_url, id_button, input_spcat);
+        }
+    </script>
+    <script src="{% static 'lab_4/js/main.js' %}"></script>
+</body>
+</html>

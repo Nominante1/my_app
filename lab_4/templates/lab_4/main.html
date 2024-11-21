@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,13 @@
 </head>
 <body>
     <div>
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     <form method="post">
         {% csrf_token %}
         <div class="f">
@@ -33,16 +40,21 @@
             {{ form.spcat }}
         </div>
         <div class="f">
-            <label for="id_types">{{ form.sptypes.label }}</label>
-            {{ form.sptypes }}
-            {% if form.sptypes.errors %}
-                <div class="error">{{ form.sptypes.errors }}</div> <!-- Если произошла ошибка (не выбран ни один вариант)-->
+            <label for="id_types">{{ form.sptype.label }}</label>
+            {{ form.sptype }}
+            {% if form.sptype.errors %}
+                <div class="error">{{ form.sptype.errors }}</div> <!-- Если произошла ошибка (не выбран ни один вариант)-->
             {% endif %}
+        </div>
+        <div class="f">
+            <label for="id_save">{{ form.savepl.label }}</label>
+            {{ form.savepl }}
         </div>
     <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
 
-    <a href="{% url 'upload_file' %}">Перейти на страницу загрузки файлов</a>
+    <a href="{% url 'upload_file' %}">Перейти на страницу загрузки файлов</a><br>
+    <a href="{% url 'splist' %}">Перейти на страницу просмотра содержимого</a>
 </div>
 </body>
 </html>

@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<body>
+    {% if form.readpl.value == '1' %}
+        <h1>СЕЙЧАС ВЫБРАН JSON</h1>
+    {% else %}
+        <h1>СЕЙЧАС ВЫБРАНА БД</h1>
+    {% endif %}
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="f">
+                <label for="id_read">{{ form.readpl.label }}</label>
+                {{ form.readpl }}
+            </div>
+            <button type="submit" class="btn btn-primary">Выбрать</button>
+        </form>
+    </div>
+    <div>
+        {% if form.readpl.value == '1' %}
+            <div id="button_print_all_json">
+                <button class="btn btn-primary">Вывести всё из JSON</button>
+            </div>
+        {% else %}
+            <div id="button_print_all_db">
+                <button class="btn btn-primary">Вывести всё из БД</button>
+            </div>
+            <div>
+                <div>
+                    <input type="text" id="search-input" placeholder="Введите имя или фамилию для поиска...">
+                    <button id="search-button">Поиск</button>
+                </div>
+            </div>
+        {% endif %}
+        <h1>Sportsperson List</h1>
+        <table id="sport-table" border="1">
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Sport Category</th>
+                <th>Sport Types</th>
+            </tr>
+            {% if form.readpl.value == '1' %}
+                {% for person in sportspeople %}
+                <tr>
+                    <td id="name">{{ person.name }}</td>
+                    <td id="surname">{{ person.surname }}</td>
+                    <td id="age">{{ person.age }}</td>
+                    <td id="gender">{{ person.gender }}</td>
+                    <td id="spcat">{{ person.spcat }}</td>
+                    <td id="sptype">{{ person.sptype }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% endif %}
+        </table> <br>
+
+        <div class="editing">
+        </div> <br>
+        <div class="deleting">
+            <td><button class="delete-button" data-id="{{ person.id }}">Удалить</button></td>
+        </div>
+    </div>
+    <a href="{% url 'sport_view' %}">Вернуться на главную</a><br>
+    <a href="{% url 'edit_sp_temp' %}">Перейти на страницу редактирования</a>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() 
+        {
+            const Button_print = document.getElementById('button_print_all_db');
+            const outputField = document.getElementById('search-results');
+            const GetSportUrls = "{% url 'get_sportperson' %}";
+            Button_print.addEventListener('click', function() //слушаем изменение поля инпут
+            {
+                getAllSportperson(GetSportUrls);
+            });
+            const Button_print_JSON = document.getElementById('button_print_all_json');
+            Button_print_JSON.addEventListener('click', function()
+            {
+                const data = JSON.parse('D:/my_app/Sportspeople/sportspeople.json')
+                console.log(data)
+                fetch('D:/my_app/Sportspeople/sportspeople.json')
+                .then(response => {
+                if (!response.ok) 
+                {
+                    throw new Error('Ой, ошибка в fetch: ' + response.statusText);
+                }
+                return response.json();
+                })
+                .then(jsonData => console.log(jsonData))
+                .catch(error => console.error('Ошибка при исполнении запроса: ', error));
+            });
+        });
+
+        //для поиска
+        const searchUrl = "{% url 'find_sportperson' %}";
+        document.getElementById("search-button").addEventListener("click", () => 
+        {
+            const query = document.getElementById("search-input").value;
+            searchSportspeople(searchUrl, query);
+        });
+
+    </script>
+    <script src="{% static 'lab_4/js/main.js' %}"></script>
+</body>
+</html>
