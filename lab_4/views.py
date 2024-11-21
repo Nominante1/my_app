@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.db import IntegrityError
 
+
 def sport_view(request):
     if request.method == 'POST':
         form = SportForm(request.POST)
@@ -32,7 +33,7 @@ def sport_view(request):
                 try:
                     sportsperson.save()
                 except IntegrityError:
-                    messages.success(request, 'Обнаружен дупликат')
+                    messages.error(request, 'Обнаружен дупликат')
                     return render(request, 'lab_4/main.html', {'form': form})
                 messages.success(request, 'Данные успешно сохранены в базу данных.')  # Добавлено сообщение об успешном сохранении
                 form = SportForm()  # Создаем новый экземпляр формы
@@ -143,15 +144,38 @@ def edit_sportperson(request):
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
     if is_ajax:
         if request.method == 'GET':
-            query = request.GET.get('q', '').strip()
-            if query:
-                sportperson = Sportspeople.objects.get(pk = query.id.value()).update(spcat = query.input.value())
-            else:
-                return JsonResponse({'status': 'Empty input'})
-            return JsonResponse({'context': sportperson})
+            record_id = request.GET.get('id', '').strip()
+            new_spcat = request.GET.get('input', '').strip()
+            if record_id and new_spcat:
+                s = ".,:;!_*-+()/#%&"
+                for char in s:
+                    if char in new_spcat:
+                        return JsonResponse({'status': 'Incorrect sport category'}, status=400) 
+                sportperson = Sportspeople.objects.filter(pk=record_id).update(spcat=new_spcat)
+                sportperson = Sportspeople.objects.get(pk=record_id)
+                sportperson_data = {
+                        'id': sportperson.pk,
+                        'name': sportperson.name,
+                        'surname': sportperson.surname,
+                        'age': sportperson.age,
+                        'gender': sportperson.gender,
+                        'spcat': sportperson.spcat,
+                        'sptype': sportperson.sptype,
+                    }
+                return JsonResponse({'status': 'Success', 'sportperson': sportperson_data})
     return JsonResponse({'status': 'Invalid request'}, status=400)
                 
-    
+def delete_sportperson(request):
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+    if is_ajax:
+        if request.method == 'GET':
+            record_id = request.GET.get('id', '').strip()
+            if record_id:
+                sportperson = get_object_or_404(Sportspeople, pk=record_id)
+                sportperson.delete()
+                sportperson = list(Sportspeople.objects.all().values())
+                return JsonResponse({'status': 'Success', 'context': sportperson})
+    return JsonResponse({'status': 'Invalid request'}, status=400)   
 
 
 #def edit_sportperson(request, pk):
@@ -181,11 +205,3 @@ def edit_sportperson(request):
 #        'spcat': sportperson.spcat,
 #        'sptype': sportperson.sptype,
 #    })
-
-
-def delete_sportperson(request, id):
-    if request.method == "DELETE":
-        sportperson = get_object_or_404(Sportspeople, id=id)
-        sportperson.delete()
-        return JsonResponse({"success": True})
-    return JsonResponse({"success": False})

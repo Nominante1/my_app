@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Редактировать спортивную категорию</h1>
+    <div id="error-message" style="color: red; display: none;"></div>
     <div id="button_print_all_db">
         <button class="btn btn-primary">Вывести записи из БД</button>
     </div>
@@ -30,6 +31,7 @@
                 <td></td>
             </tr>
         </table> <br>
+        <a href="{% url 'splist' %}">Вернуться на страницу просмотра содержимого</a>
     <script>
         document.addEventListener('DOMContentLoaded', function() 
         {
@@ -46,18 +48,18 @@
         })
         function StartEdit(obj)
         {
-            const edit_url = "{% url 'edit_sportperson'}";
+            
+            const edit_url = "{% url 'edit_sportperson' %}";
             const id_button = obj.id;
             const id_spcat = obj.id;
-            const inputs_spcat = document.getElementByTagName(input);
-            for(let i=0; i < inputs_spcat.length; i++)
-            {
-                if (inputs_spcat[i].id == obj.id)
-                {
-                    input_spcat = inputs_spcat[i].value();
-                }
-            }
+            const input_spcat = document.getElementById(`spcat-${id_button}`).value;
             edit_sportperson(edit_url, id_button, input_spcat);
+        }
+        function StartDelete(obj)
+        {
+            const delete_url = "{% url 'delete_sportperson' %}";
+            const id_button = obj.id;
+            delete_sportperson(delete_url, id_button);
         }
     </script>
     <script src="{% static 'lab_4/js/main.js' %}"></script>
